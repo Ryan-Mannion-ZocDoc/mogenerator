@@ -17,26 +17,26 @@ public extension <$managedObjectClassName$> {
     }
 	
 	<$if noninheritedAttributes.@count > 0$>
-	public struct Attributes {<$foreach Attribute noninheritedAttributes do$>
-		static let <$Attribute.name$> = "<$Attribute.name$>"<$endforeach do$>
+	public enum Attributes {<$foreach Attribute noninheritedAttributes do$>
+		public static let <$Attribute.name$> = "<$Attribute.name$>"<$endforeach do$>
 	}
 	<$endif$>
 
 	<$if noninheritedRelationships.@count > 0$>
-	public struct Relationships {<$foreach Relationship noninheritedRelationships do$>
-		static let <$Relationship.name$> = "<$Relationship.name$>"<$endforeach do$>
+	public enum Relationships {<$foreach Relationship noninheritedRelationships do$>
+		public static let <$Relationship.name$> = "<$Relationship.name$>"<$endforeach do$>
 	}
 	<$endif$>
 
 	<$if noninheritedFetchedProperties.@count > 0$>
-	public struct FetchedProperties {<$foreach FetchedProperty noninheritedFetchedProperties do$>
-	    static let <$FetchedProperty.name$> = "<$FetchedProperty.name$>"<$endforeach do$>
+	public enum FetchedProperties {<$foreach FetchedProperty noninheritedFetchedProperties do$>
+		public static let <$FetchedProperty.name$> = "<$FetchedProperty.name$>"<$endforeach do$>
 	}
 	<$endif$>
 
 	<$if hasUserInfoKeys && userInfoKeyValues.@count > 0$>
-	public struct UserInfo: String {<$foreach UserInfo userInfoKeyValues do$>
-	    static let <$UserInfo.key$> = "<$UserInfo.key$>"<$endforeach do$>
+	public enum UserInfo: String {<$foreach UserInfo userInfoKeyValues do$>
+		public static let <$UserInfo.key$> = "<$UserInfo.key$>"<$endforeach do$>
 	}
 	<$endif$>
 	
