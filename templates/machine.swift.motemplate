@@ -6,7 +6,7 @@ import CoreData
 <$if hasCustomBaseCaseImport$>import <$baseClassImport$><$endif$>
 
 
-public extension <$managedObjectClassName$> {
+extension <$managedObjectClassName$> {
 	
     <$if (hasCustomSuperclass || (hasCustomSuperentity && TemplateVar.overrideBaseClass))$>override <$endif$>@objc public class var entityName: String {
         return "<$name$>"
