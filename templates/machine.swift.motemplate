@@ -8,12 +8,15 @@ import CoreData
 
 extension <$managedObjectClassName$> {
 	
-    <$if (hasCustomSuperclass || (hasCustomSuperentity && TemplateVar.overrideBaseClass))$>override <$endif$>@objc public class var entityName: String {
+	// MARK: - Class methods
+
+    <$if (hasCustomSuperclass || (hasCustomSuperentity && TemplateVar.overrideBaseClass))$>override <$endif$>open class func entityName () -> String {
         return "<$name$>"
     }
 
-    <$if (hasCustomSuperclass || (hasCustomSuperentity && TemplateVar.overrideBaseClass))$>override <$endif$>public class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
+	<$if (hasCustomSuperclass || (hasCustomSuperentity && TemplateVar.overrideBaseClass))$>override <$endif$>@nonobjc
+    open class func fetchRequest() -> NSFetchRequest<<$name$>> {
+        return NSFetchRequest(entityName: self.entityName())
     }
 	
 	<$if noninheritedAttributes.@count > 0$>
